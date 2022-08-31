@@ -1,30 +1,34 @@
-var currentDay = $("#currentDay");
-var timeBlocks = $(".time-block");
+let currentDay = $("#currentDay");
+let timeBlocks = $(".time-block");
 
-var currentDate = moment().format("dddd, MMMM Do YYYY");
-var currentHour = moment().format("H");
+let toDoItems = [];
 
-var toDoItems = [];
+// Display current date and time
+function dateAndTime() {
+    let currentDate = moment().format("MMM DD, YYYY [at] hh:mm:ss a");
+    currentDay.text(currentDate);
+}
 
-//Show current date
-currentDay.text(currentDate);
-
-//Format timeblock colors based on current time
+//Format timeblocks colors based on current time
 function colorTimeBlocks(){
     timeBlocks.each(function(){
-      var thisBlock = $(this);
-      var thisBlockHr = parseInt(thisBlock.attr("data-hour"));
+        let thisBlock = $(this);
+        let currentHour = moment().format("H");
+        let thisHour = parseInt(thisBlock.attr("data-hour"));
 
-      if (thisBlockHr === currentHour) {
+        if (thisHour == currentHour) {
         thisBlock.addClass("present").removeClass("past future");
-      }
-      if (thisBlockHr < currentHour) {
+        }
+        if (thisHour < currentHour) {
         thisBlock.addClass("past").removeClass("present future");
-      }
-      if (thisBlockHr > currentHour) {
+        }
+        if (thisHour > currentHour) {
         thisBlock.addClass("future").removeClass("past present");
-      }
+        }
     });
 }
 
+setInterval(dateAndTime, 1000);
 colorTimeBlocks();
+
+
