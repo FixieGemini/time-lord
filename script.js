@@ -1,9 +1,7 @@
 let currentDay = $("#currentDay");
 let timeBlocks = $(".time-block");
 
-let toDoItems = [];
-
-// Display current date and time
+//Display current date and time
 function dateAndTime() {
     let currentDate = moment().format("MMM DD, YYYY [at] hh:mm:ss a");
     currentDay.text(currentDate);
@@ -13,8 +11,8 @@ function dateAndTime() {
 function colorTimeBlocks(){
     timeBlocks.each(function(){
         let thisBlock = $(this);
+        let thisHour = $(this).data("id");
         let currentHour = moment().format("H");
-        let thisHour = parseInt(thisBlock.attr("data-hour"));
 
         if (thisHour == currentHour) {
         thisBlock.addClass("present").removeClass("past future");
@@ -28,7 +26,8 @@ function colorTimeBlocks(){
     });
 }
 
+//Save a to do item to local storage
+
+
 setInterval(dateAndTime, 1000);
 colorTimeBlocks();
-
-
