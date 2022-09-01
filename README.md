@@ -5,3 +5,5 @@ This tool allows the user to enter tasks they wish to complete in a 9am - 5pm sc
 https://fixiegemini.github.io/time-lord/
 
 ![](../fixiegemini.github.io_time-lord_.png)
+
+![](../fixiegemini.github.io_time-lord_.png)
